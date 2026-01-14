@@ -32,13 +32,24 @@ class AlatGUI:
             command=self.simpan_alat
         ).pack(pady=10)
 
+        tk.Button(
+            self.window,
+            text="Update Alat",
+            command=self.update_alat
+        ).pack(pady=5)
+
+        tk.Button(
+            self.window,
+            text="Hapus Alat",
+            command=self.hapus_alat
+        ).pack(pady=5)
+
         tk.Label(self.window, text="Daftar Alat").pack(pady=5)
         self.listbox = tk.Listbox(self.window, width=50)
         self.listbox.pack()
 
         self.listbox.bind("<<ListboxSelect>>", self.select_item)
 
-        self.load_data()
         self.load_data()
 
     def select_item(self, event):
@@ -83,7 +94,9 @@ class AlatGUI:
             self.listbox.insert(tk.END, teks)
 
     def clear_form(self):
+        self.selected_id = None
         self.nama.delete(0, tk.END)
         self.kondisi.delete(0, tk.END)
         self.status.delete(0, tk.END)
         self.status.insert(0, "Tersedia")
+
