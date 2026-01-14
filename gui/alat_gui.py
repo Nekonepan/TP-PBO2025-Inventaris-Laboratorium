@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from ..src.database import Database
-from ..src.models.alat import Alat
+from src.database.database import Database
+from src.models.alat import Alat
 
 class AlatGUI:
     def __init__(self):

@@ -2,7 +2,7 @@ import sqlite3
 
 class Database:
     def __init__(self):
-        self.conn = sqlite3.connect("database/inventaris.db")
+        self.conn = sqlite3.connect("src/database/inventaris.db")
         self.cursor = self.conn.cursor()
         self.create_tables()
 

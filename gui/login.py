@@ -1,5 +1,5 @@
 import tkinter as tk
-from gui.dashboard import DashboardGUI
+from .dashboard import DashboardGUI
 
 class LoginGUI:
     def __init__(self):
