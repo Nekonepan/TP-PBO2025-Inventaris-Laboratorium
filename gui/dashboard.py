@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from gui.alat_gui import AlatGUI
 
 class DashboardGUI:
     def __init__(self):
@@ -44,7 +45,7 @@ class DashboardGUI:
         self.window.mainloop()
 
     def kelola_alat(self):
-        messagebox.showinfo("Info", "Menu Kelola Alat")
+        AlatGUI()
 
     def kelola_kategori(self):
         messagebox.showinfo("Info", "Menu Kelola Kategori")
