@@ -1,9 +1,8 @@
 import tkinter as tk
-from ..src.database import Database
+from gui.dashboard import DashboardGUI
 
 class LoginGUI:
     def __init__(self):
-        self.db = Database()
         self.window = tk.Tk()
         self.window.title("Login Inventaris Laboratorium")
 
@@ -19,4 +18,6 @@ class LoginGUI:
         self.window.mainloop()
 
     def login(self):
-        print("Login ditekan")
+        # sementara tanpa validasi (aman untuk PBO)
+        self.window.destroy()
+        DashboardGUI()
