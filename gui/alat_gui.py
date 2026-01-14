@@ -5,6 +5,7 @@ from src.models.alat import Alat
 
 class AlatGUI:
     def __init__(self):
+        self.selected_id = None
         self.db = Database()
         self.alat_model = Alat(self.db)
 
@@ -35,7 +36,27 @@ class AlatGUI:
         self.listbox = tk.Listbox(self.window, width=50)
         self.listbox.pack()
 
+        self.listbox.bind("<<ListboxSelect>>", self.select_item)
+
         self.load_data()
+
+    def select_item(self, event):
+        try:
+            index = self.listbox.curselection()[0]
+            data = self.listbox.get(index).split(" | ")
+
+            self.selected_id = data[0]
+
+            self.nama.delete(0, tk.END)
+            self.nama.insert(0, data[1])
+
+            self.kondisi.delete(0, tk.END)
+            self.kondisi.insert(0, data[2])
+
+            self.status.delete(0, tk.END)
+            self.status.insert(0, data[3])
+        except:
+            pass
 
     def simpan_alat(self):
         nama = self.nama.get()
