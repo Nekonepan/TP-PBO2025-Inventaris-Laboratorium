@@ -1,0 +1,56 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class DashboardGUI:
+    def __init__(self):
+        self.window = tk.Tk()
+        self.window.title("Dashboard Inventaris Laboratorium")
+        self.window.geometry("300x300")
+
+        tk.Label(
+            self.window,
+            text="Dashboard Inventaris Laboratorium",
+            font=("Arial", 12, "bold")
+        ).pack(pady=10)
+
+        tk.Button(
+            self.window,
+            text="Kelola Alat",
+            width=20,
+            command=self.kelola_alat
+        ).pack(pady=5)
+
+        tk.Button(
+            self.window,
+            text="Kelola Kategori",
+            width=20,
+            command=self.kelola_kategori
+        ).pack(pady=5)
+
+        tk.Button(
+            self.window,
+            text="Peminjaman Alat",
+            width=20,
+            command=self.peminjaman
+        ).pack(pady=5)
+
+        tk.Button(
+            self.window,
+            text="Logout",
+            width=20,
+            command=self.logout
+        ).pack(pady=10)
+
+        self.window.mainloop()
+
+    def kelola_alat(self):
+        messagebox.showinfo("Info", "Menu Kelola Alat")
+
+    def kelola_kategori(self):
+        messagebox.showinfo("Info", "Menu Kelola Kategori")
+
+    def peminjaman(self):
+        messagebox.showinfo("Info", "Menu Peminjaman")
+
+    def logout(self):
+        self.window.destroy()
