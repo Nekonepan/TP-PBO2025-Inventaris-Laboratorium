@@ -100,6 +100,7 @@ class AlatGUI:
         self.status.delete(0, tk.END)
         self.status.insert(0, "Tersedia")
 
+
     def update_alat(self):
         if not self.selected_id:
             messagebox.showwarning("Peringatan", "Pilih data terlebih dahulu")
