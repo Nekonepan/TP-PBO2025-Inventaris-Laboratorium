@@ -100,3 +100,28 @@ class AlatGUI:
         self.status.delete(0, tk.END)
         self.status.insert(0, "Tersedia")
 
+    def update_alat(self):
+        if not self.selected_id:
+            messagebox.showwarning("Peringatan", "Pilih data terlebih dahulu")
+            return
+
+        self.alat_model.update_alat(
+            self.selected_id,
+            self.nama.get(),
+            self.kondisi.get(),
+            self.status.get()
+        )
+        messagebox.showinfo("Sukses", "Data berhasil diupdate")
+        self.load_data()
+        self.clear_form()
+
+
+    def hapus_alat(self):
+        if not self.selected_id:
+            messagebox.showwarning("Peringatan", "Pilih data terlebih dahulu")
+            return
+
+        self.alat_model.delete_alat(self.selected_id)
+        messagebox.showinfo("Sukses", "Data berhasil dihapus")
+        self.load_data()
+        self.clear_form()
