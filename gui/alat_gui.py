@@ -5,6 +5,7 @@ from src.models.alat import Alat
 
 class AlatGUI:
     def __init__(self):
+        self.load_data()
         self.selected_id = None
         self.db = Database()
         self.alat_model = Alat(self.db)
@@ -63,6 +64,8 @@ class AlatGUI:
         kondisi = self.kondisi.get()
         status = self.status.get()
 
+        
+
         if nama == "" or kondisi == "":
             messagebox.showwarning("Peringatan", "Data tidak boleh kosong")
             return
@@ -75,11 +78,9 @@ class AlatGUI:
     def load_data(self):
         self.listbox.delete(0, tk.END)
         data = self.alat_model.get_all_alat()
-        for alat in data:
-            self.listbox.insert(
-                tk.END,
-                f"{alat[0]} | {alat[1]} | {alat[2]} | {alat[3]}"
-            )
+        for row in data:
+            teks = f"{row[0]} | {row[1]} | {row[2]} | {row[3]}"
+            self.listbox.insert(tk.END, teks)
 
     def clear_form(self):
         self.nama.delete(0, tk.END)
