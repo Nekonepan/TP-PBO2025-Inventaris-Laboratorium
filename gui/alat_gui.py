@@ -5,7 +5,6 @@ from src.models.alat import Alat
 
 class AlatGUI:
     def __init__(self):
-        self.load_data()
         self.selected_id = None
         self.db = Database()
         self.alat_model = Alat(self.db)
@@ -39,6 +38,7 @@ class AlatGUI:
 
         self.listbox.bind("<<ListboxSelect>>", self.select_item)
 
+        self.load_data()
         self.load_data()
 
     def select_item(self, event):
