@@ -1,22 +1,32 @@
+# import tkinter as tk
+# from tkinter import messagebox
+# from src.database.database import Database
+# from src.models.alat import Alat
+# from src.models.kategori import Kategori
+# from tkinter import ttk
+
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
+
 from src.database.database import Database
 from src.models.alat import Alat
 from src.models.kategori import Kategori
-from tkinter import ttk
+
 
 class AlatGUI:
     def __init__(self):
+        # === Model ===
         self.selected_id = None
         self.db = Database()
         self.alat_model = Alat(self.db)
         self.kategori_model = Kategori(self.db)
-        self.load_kategori()
 
+        # === Window ===
         self.window = tk.Toplevel()
         self.window.title("Kelola Alat Laboratorium")
         self.window.geometry("400x400")
 
+        # === Form ===
         tk.Label(self.window, text="Nama Alat").pack()
         self.nama = tk.Entry(self.window)
         self.nama.pack()
@@ -30,10 +40,42 @@ class AlatGUI:
         self.status.insert(0, "Tersedia")
         self.status.pack(pady=10)
 
+        # === KATEGORI (INI PENTING) ===
         tk.Label(self.window, text="Kategori").pack()
-
         self.kategori_combo = ttk.Combobox(self.window, state="readonly")
         self.kategori_combo.pack()
+
+        # === LOAD KATEGORI
+        self.load_kategori()
+
+        
+        # self.selected_id = None
+        # self.db = Database()
+        # self.alat_model = Alat(self.db)
+        # self.kategori_model = Kategori(self.db)
+        # self.load_kategori()
+
+        # self.window = tk.Toplevel()
+        # self.window.title("Kelola Alat Laboratorium")
+        # self.window.geometry("400x400")
+
+        # tk.Label(self.window, text="Nama Alat").pack()
+        # self.nama = tk.Entry(self.window)
+        # self.nama.pack()
+
+        # tk.Label(self.window, text="Kondisi").pack()
+        # self.kondisi = tk.Entry(self.window)
+        # self.kondisi.pack()
+
+        # tk.Label(self.window, text="Status").pack()
+        # self.status = tk.Entry(self.window)
+        # self.status.insert(0, "Tersedia")
+        # self.status.pack(pady=10)
+
+        # tk.Label(self.window, text="Kategori").pack()
+
+        # self.kategori_combo = ttk.Combobox(self.window, state="readonly")
+        # self.kategori_combo.pack()
 
 
         tk.Button(

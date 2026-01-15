@@ -14,7 +14,7 @@ class LoginGUI:
         self.password = tk.Entry(self.window, show="*")
         self.password.pack()
 
-        tk.Button(self.window, text="Login", command=self.login).pack()
+        tk.Button(self.window, text="Login", command=self.login).pack(pady=10)
         self.window.mainloop()
 
     def login(self):

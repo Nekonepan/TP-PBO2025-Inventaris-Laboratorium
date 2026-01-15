@@ -6,6 +6,12 @@ class Database:
         self.cursor = self.conn.cursor()
         self.create_tables()
 
+    def get_all_kategori(self):
+        query = "SELECT kategori_id, nama_kategori FROM kategori"
+        self.db.cursor.execute(query)
+        return self.db.cursor.fetchall()
+
+
     def create_tables(self):
         self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS user (
