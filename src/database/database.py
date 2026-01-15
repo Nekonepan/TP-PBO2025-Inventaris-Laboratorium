@@ -5,6 +5,7 @@ class Database:
         self.conn = sqlite3.connect("src/database/inventaris.db")
         self.cursor = self.conn.cursor()
         self.create_tables()
+        # self.seed_alat()
 
     def get_all_kategori(self):
         query = "SELECT kategori_id, nama_kategori FROM kategori"
@@ -50,5 +51,26 @@ class Database:
             user_id INTEGER
         )
         """)
+
+    # def seed_alat(self):
+    #     self.cursor.execute("""
+    #     INSERT OR IGNORE INTO kategori (kategori_id, nama_kategori, deskripsi)
+    #     VALUES
+    #     (1, 'Perangkat Keras', 'Peralatan utama laboratorium'),
+    #     (2, 'Multimedia', 'Peralatan presentasi'),
+    #     (3, 'Aksesoris', 'Peralatan pendukung'),
+    #     (4, 'Jaringan', 'Perangkat jaringan')
+    #     """)
+
+    #     self.cursor.execute("""
+    #     INSERT OR IGNORE INTO alat (alat_id, nama_alat, kondisi, status, kategori_id)
+    #     VALUES
+    #     (1, 'Laptop Dell', 'Baik', 'Tersedia', 1),
+    #     (2, 'Proyektor Epson', 'Baik', 'Tersedia', 2),
+    #     (3, 'Mouse Logitech', 'Baik', 'Tersedia', 3),
+    #     (4, 'Keyboard Mechanical', 'Baik', 'Tersedia', 3),
+    #     (5, 'Kabel LAN', 'Baik', 'Tersedia', 4),
+    #     (6, 'Router TP-Link', 'Baik', 'Tersedia', 4)
+    #     """)
 
         self.conn.commit()
