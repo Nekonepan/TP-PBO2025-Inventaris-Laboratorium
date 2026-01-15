@@ -10,7 +10,6 @@ class Peminjaman:
         self.db.cursor.execute(query, (alat_id, user_id, tanggal_pinjam))
         self.db.conn.commit()
 
-        # update status alat
         self.db.cursor.execute(
             "UPDATE alat SET status='Dipinjam' WHERE alat_id=?",
             (alat_id,)
@@ -26,7 +25,6 @@ class Peminjaman:
         self.db.cursor.execute(query, (tanggal_kembali, pinjam_id))
         self.db.conn.commit()
 
-        # update status alat
         self.db.cursor.execute(
             "UPDATE alat SET status='Tersedia' WHERE alat_id=?",
             (alat_id,)
@@ -35,15 +33,12 @@ class Peminjaman:
 
     def get_peminjaman_aktif(self):
         query = """
-        SELECT p.pinjam_id,
-               a.nama_alat,
-               u.username,
-               p.tanggal_pinjam,
-               a.alat_id
+        SELECT p.pinjam_id, a.nama_alat, u.username,
+               p.tanggal_pinjam, a.alat_id
         FROM peminjaman p
         JOIN alat a ON p.alat_id = a.alat_id
         JOIN user u ON p.user_id = u.user_id
-        WHERE p.status_pinjam = 'Dipinjam'
+        WHERE p.status_pinjam='Dipinjam'
         """
         self.db.cursor.execute(query)
         return self.db.cursor.fetchall()
