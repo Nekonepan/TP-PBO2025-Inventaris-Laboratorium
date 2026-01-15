@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from gui.alat_gui import AlatGUI
 from gui.kategori_gui import KategoriGUI
+from gui.peminjaman_gui import PeminjamanGUI
 
 class DashboardGUI:
     def __init__(self):
@@ -34,7 +35,7 @@ class DashboardGUI:
             self.window,
             text="Peminjaman Alat",
             width=20,
-            command=self.peminjaman
+            command=self.peminjaman_alat
         ).pack(pady=5)
 
         tk.Button(
@@ -52,11 +53,14 @@ class DashboardGUI:
     def buka_kategori(self):
         KategoriGUI()
 
-    def kelola_kategori(self):
-        messagebox.showinfo("Info", "Menu Kelola Kategori")
+    def peminjaman_alat(self):
+        PeminjamanGUI()
 
-    def peminjaman(self):
-        messagebox.showinfo("Info", "Menu Peminjaman")
+    # def kelola_kategori(self):
+    #     messagebox.showinfo("Info", "Menu Kelola Kategori")
+
+    # def peminjaman(self):
+    #     messagebox.showinfo("Info", "Menu Peminjaman")
 
     def logout(self):
         konfirmasi = messagebox.askyesno("Logout", "Apakah Anda yakin ingin keluar?")
