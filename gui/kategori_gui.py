@@ -15,23 +15,26 @@ class KategoriGUI:
 
         tk.Label(self.window, text="Nama Kategori").pack()
         self.nama = tk.Entry(self.window)
-        self.nama.pack()
+        self.nama.pack(pady=10)
 
         tk.Button(
             self.window,
             text="Simpan Kategori",
+            width=20,
             command=self.simpan_kategori
         ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Update Kategori",
+            width=20,
             command=self.update_kategori
         ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Hapus Kategori",
+            width=20,
             command=self.hapus_kategori
         ).pack(pady=5)
 

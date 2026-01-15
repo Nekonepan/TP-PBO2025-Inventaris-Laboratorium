@@ -24,23 +24,26 @@ class AlatGUI:
         tk.Label(self.window, text="Status").pack()
         self.status = tk.Entry(self.window)
         self.status.insert(0, "Tersedia")
-        self.status.pack()
+        self.status.pack(pady=10)
 
         tk.Button(
             self.window,
             text="Simpan Alat",
+            width=20,
             command=self.simpan_alat
         ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Update Alat",
+            width=20,
             command=self.update_alat
         ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Hapus Alat",
+            width=20,
             command=self.hapus_alat
         ).pack(pady=5)
 
