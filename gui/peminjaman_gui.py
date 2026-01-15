@@ -53,8 +53,10 @@ class PeminjamanGUI:
         self.listbox_pinjam.delete(0, tk.END)
         data = self.peminjaman_model.get_peminjaman_aktif()
         for row in data:
-            teks = f"{row[0]} | {row[1]} | {row[2]} | {row[3]}"
+            # pinjam_id | nama_alat | username | tanggal | alat_id
+            teks = f"{row[0]} | {row[1]} | {row[2]} | {row[3]} | {row[4]}"
             self.listbox_pinjam.insert(tk.END, teks)
+
 
     def pinjam(self):
         if not self.nama.get() or not self.listbox.curselection():
@@ -64,9 +66,11 @@ class PeminjamanGUI:
         data = self.listbox.get(self.listbox.curselection()[0]).split(" | ")
         alat_id = data[0]
 
+        user_id = 1  # sementara (admin)
+
         self.peminjaman_model.pinjam_alat(
             alat_id,
-            self.nama.get(),
+            user_id,
             date.today().isoformat()
         )
 
@@ -78,20 +82,21 @@ class PeminjamanGUI:
         if not self.listbox_pinjam.curselection():
             messagebox.showwarning("Peringatan", "Pilih data")
             return
-
+    
         data = self.listbox_pinjam.get(
             self.listbox_pinjam.curselection()[0]
         ).split(" | ")
-
-        peminjaman_id = data[0]
-        alat_id = data[-1]
-
+    
+        pinjam_id = data[0]
+        alat_id = data[4]
+    
         self.peminjaman_model.kembalikan_alat(
-            peminjaman_id,
+            pinjam_id,
             alat_id,
             date.today().isoformat()
         )
-
+    
         messagebox.showinfo("Sukses", "Alat dikembalikan")
         self.load_alat()
         self.load_peminjaman()
+
