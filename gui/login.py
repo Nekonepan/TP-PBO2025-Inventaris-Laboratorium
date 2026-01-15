@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 from src.database.database import Database
-from src.utils.session import Session
-from .dashboard import DashboardGUI
 from src.session.session import Session
+from gui.dashboard import DashboardGUI
 
 
 class LoginGUI:
@@ -21,27 +20,25 @@ class LoginGUI:
         self.password.pack()
 
         tk.Button(self.window, text="Login", command=self.login).pack(pady=10)
+
         self.window.mainloop()
 
     def login(self):
         username = self.username.get()
         password = self.password.get()
 
-        query = """
-        SELECT user_id, username, role
-        FROM user
-        WHERE username=? AND password=?
-        """
-        self.db.cursor.execute(query, (username, password))
+        self.db.cursor.execute(
+            "SELECT * FROM user WHERE username=? AND password=?",
+            (username, password)
+        )
         user = self.db.cursor.fetchone()
 
         if user:
-            # SIMPAN SESSION
             Session.user_id = user[0]
             Session.username = user[1]
-            Session.role = user[2]
+            Session.role = user[3]
 
-            self.window.destroy()
-            DashboardGUI()
+            self.window.destroy()      # ✅ TUTUP LOGIN
+            DashboardGUI()             # buka dashboard
         else:
-            messagebox.showerror("Error", "Username atau password salah")
+            messagebox.showerror("Login Gagal", "Username atau password salah")
