@@ -3,6 +3,8 @@ from tkinter import messagebox
 from gui.alat_gui import AlatGUI
 from gui.kategori_gui import KategoriGUI
 from gui.peminjaman_gui import PeminjamanGUI
+from src.session.session import Session
+
 
 class DashboardGUI:
     def __init__(self):
@@ -16,21 +18,23 @@ class DashboardGUI:
             font=("Arial", 12, "bold")
         ).pack(pady=10)
 
-        tk.Button(
-            self.window,
-            text="Kelola Alat",
-            width=20,
-            command=self.kelola_alat
-        ).pack(pady=5)
+        # ===== MENU BERDASARKAN ROLE =====
+        if Session.role == "admin":
+            tk.Button(
+                self.window,
+                text="Kelola Alat",
+                width=20,
+                command=self.kelola_alat
+            ).pack(pady=5)
 
-        tk.Button(
-            self.window,
-            text="Kelola Kategori",
-            width=20,
-            command=self.buka_kategori
-        ).pack(pady=5)
+            tk.Button(
+                self.window,
+                text="Kelola Kategori",
+                width=20,
+                command=self.kelola_kategori
+            ).pack(pady=5)
 
-
+        # semua role boleh pinjam
         tk.Button(
             self.window,
             text="Peminjaman Alat",
@@ -50,17 +54,11 @@ class DashboardGUI:
     def kelola_alat(self):
         AlatGUI()
 
-    def buka_kategori(self):
+    def kelola_kategori(self):
         KategoriGUI()
 
     def peminjaman_alat(self):
         PeminjamanGUI()
-
-    # def kelola_kategori(self):
-    #     messagebox.showinfo("Info", "Menu Kelola Kategori")
-
-    # def peminjaman(self):
-    #     messagebox.showinfo("Info", "Menu Peminjaman")
 
     def logout(self):
         konfirmasi = messagebox.askyesno("Logout", "Apakah Anda yakin ingin keluar?")
