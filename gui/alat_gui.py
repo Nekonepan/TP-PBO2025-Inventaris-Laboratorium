@@ -23,6 +23,7 @@ class AlatGUI:
 
         # === Window ===
         self.window = tk.Toplevel()
+        self.window.state("zoomed")
         self.window.title("Kelola Alat Laboratorium")
         self.window.geometry("400x400")
 

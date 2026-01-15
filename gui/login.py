@@ -10,6 +10,7 @@ class LoginGUI:
         self.db = Database()
         self.window = tk.Tk()
         self.window.title("Login Inventaris Laboratorium")
+        self.window.state("zoomed")
 
         tk.Label(self.window, text="Username").pack()
         self.username = tk.Entry(self.window)

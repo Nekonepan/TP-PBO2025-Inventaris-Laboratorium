@@ -12,6 +12,7 @@ class DashboardGUI:
         self.window = tk.Tk()
         self.window.title("Dashboard Inventaris Laboratorium")
         self.window.geometry("300x300")
+        self.window.state("zoomed")
 
         tk.Label(
             self.window,

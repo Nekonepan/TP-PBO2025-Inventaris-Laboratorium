@@ -13,6 +13,7 @@ class PeminjamanGUI:
         self.alat_model = Alat(self.db)
 
         self.window = tk.Toplevel()
+        self.window.state("zoomed")
         self.window.title("Peminjaman Alat")
 
         tk.Label(self.window, text="Nama Peminjam").pack()
@@ -82,20 +83,20 @@ class PeminjamanGUI:
         if not self.listbox_pinjam.curselection():
             messagebox.showwarning("Peringatan", "Pilih data")
             return
-    
+
         data = self.listbox_pinjam.get(
             self.listbox_pinjam.curselection()[0]
         ).split(" | ")
-    
+
         pinjam_id = data[0]
         alat_id = data[4]
-    
+
         self.peminjaman_model.kembalikan_alat(
             pinjam_id,
             alat_id,
             date.today().isoformat()
         )
-    
+
         messagebox.showinfo("Sukses", "Alat dikembalikan")
         self.load_alat()
         self.load_peminjaman()

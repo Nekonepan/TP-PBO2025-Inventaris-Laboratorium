@@ -11,6 +11,7 @@ class KategoriGUI:
         self.selected_id = None
 
         self.window = tk.Toplevel()
+        self.window.state("zoomed")
         self.window.title("Kelola Kategori")
 
         tk.Label(self.window, text="Nama Kategori").pack()
