@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from gui.alat_gui import AlatGUI
+from gui.kategori_gui import KategoriGUI
 
 class DashboardGUI:
     def __init__(self):
@@ -25,8 +26,9 @@ class DashboardGUI:
             self.window,
             text="Kelola Kategori",
             width=20,
-            command=self.kelola_kategori
+            command=self.buka_kategori
         ).pack(pady=5)
+
 
         tk.Button(
             self.window,
@@ -46,6 +48,9 @@ class DashboardGUI:
 
     def kelola_alat(self):
         AlatGUI()
+
+    def buka_kategori(self):
+        KategoriGUI()
 
     def kelola_kategori(self):
         messagebox.showinfo("Info", "Menu Kelola Kategori")

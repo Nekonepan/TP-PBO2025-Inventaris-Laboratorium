@@ -30,7 +30,7 @@ class AlatGUI:
             self.window,
             text="Simpan Alat",
             command=self.simpan_alat
-        ).pack(pady=10)
+        ).pack(pady=5)
 
         tk.Button(
             self.window,
