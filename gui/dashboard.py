@@ -54,4 +54,6 @@ class DashboardGUI:
         messagebox.showinfo("Info", "Menu Peminjaman")
 
     def logout(self):
-        self.window.destroy()
+        konfirmasi = messagebox.askyesno("Logout", "Apakah Anda yakin ingin keluar?")
+        if konfirmasi:
+            self.window.destroy()
