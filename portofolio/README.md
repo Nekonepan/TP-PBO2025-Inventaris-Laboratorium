@@ -20,7 +20,7 @@ GitHub/GitLab: *https://github.com/Nekonepan/TP-PBO2025-Inventaris-Laboratorium*
 Tampilan awal aplikasi berupa **halaman login**, di mana pengguna harus memasukkan username dan password sebelum mengakses sistem.
 
 📷 *Screenshot:*
-`docs/screenshot/login.png`
+[docs/screenshot/login.png](docs/screenshot/login.png)
 
 ---
 
@@ -50,13 +50,13 @@ Proyek ini bertujuan untuk membangun **Aplikasi Inventaris Laboratorium** berbas
 Aplikasi ini dirancang menggunakan beberapa diagram UML sebagai berikut:
 
 1. **Use Case Diagram** – Menjelaskan interaksi pengguna dengan sistem
-   📷 `docs/uml/usecase.png`
+   [docs/uml/usecase.png](docs/uml/usecase.png)
 
 2. **Class Diagram** – Menunjukkan struktur class dan relasi antar class
-   📷 `docs/uml/class.png`
+   [docs/uml/class.png](docs/uml/class.png)
 
 3. **Sequence Diagram** – Menjelaskan alur proses interaksi sistem
-   📷 `docs/uml/sequence.png`
+   [docs/uml/sequence.png](docs/uml/sequence.png)
 
 ---
 
@@ -70,8 +70,8 @@ Antarmuka aplikasi dirancang menggunakan GUI berbasis Python yang terdiri dari:
 * Halaman Kategori
 * Halaman Peminjaman
 
-📷 *Contoh screenshot antarmuka:*
-`docs/screenshot/dashboard.png`
+*Contoh screenshot antarmuka:*
+[docs/screenshot/dashboard.png](docs/screenshot/dashboard.png)
 
 ---
 
@@ -109,7 +109,7 @@ Setiap fitur direpresentasikan dalam bentuk **class**, sehingga memudahkan pemel
 4. **Kategori** – Mengelompokkan alat berdasarkan kategori
 5. **Peminjaman Alat** – Mengelola transaksi peminjaman
 
-📷 Screenshot terdapat pada folder `docs/screenshot/`
+Screenshot terdapat pada folder [docs/screenshot/](docs/screenshot/)
 
 ---
 
