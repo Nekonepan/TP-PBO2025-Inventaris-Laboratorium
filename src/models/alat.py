@@ -10,10 +10,20 @@ class Alat:
         self.db.cursor.execute(query, (nama, kondisi, status, kategori_id))
         self.db.conn.commit()
 
+
     def get_all_alat(self):
-        query = "SELECT alat_id, nama_alat, kondisi, status FROM alat"
+        query = """
+        SELECT alat.alat_id,
+               alat.nama_alat,
+               alat.kondisi,
+               alat.status,
+               kategori.nama_kategori
+        FROM alat
+        JOIN kategori ON alat.kategori_id = kategori.kategori_id
+        """
         self.db.cursor.execute(query)
         return self.db.cursor.fetchall()
+
 
     def update_alat(self, alat_id, nama, kondisi, status):
         query = """

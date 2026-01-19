@@ -1,18 +1,33 @@
+# import tkinter as tk
+# from tkinter import messagebox
+# from src.database.database import Database
+# from src.models.alat import Alat
+# from src.models.kategori import Kategori
+# from tkinter import ttk
+
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
+
 from src.database.database import Database
 from src.models.alat import Alat
+from src.models.kategori import Kategori
+
 
 class AlatGUI:
     def __init__(self):
+        # === Model ===
         self.selected_id = None
         self.db = Database()
         self.alat_model = Alat(self.db)
+        self.kategori_model = Kategori(self.db)
 
+        # === Window ===
         self.window = tk.Toplevel()
+        self.window.state("zoomed")
         self.window.title("Kelola Alat Laboratorium")
         self.window.geometry("400x400")
 
+        # === Form ===
         tk.Label(self.window, text="Nama Alat").pack()
         self.nama = tk.Entry(self.window)
         self.nama.pack()
@@ -24,23 +39,64 @@ class AlatGUI:
         tk.Label(self.window, text="Status").pack()
         self.status = tk.Entry(self.window)
         self.status.insert(0, "Tersedia")
-        self.status.pack()
+        self.status.pack(pady=10)
+
+        # === KATEGORI (INI PENTING) ===
+        tk.Label(self.window, text="Kategori").pack()
+        self.kategori_combo = ttk.Combobox(self.window, state="readonly")
+        self.kategori_combo.pack()
+
+        # === LOAD KATEGORI
+        self.load_kategori()
+
+        
+        # self.selected_id = None
+        # self.db = Database()
+        # self.alat_model = Alat(self.db)
+        # self.kategori_model = Kategori(self.db)
+        # self.load_kategori()
+
+        # self.window = tk.Toplevel()
+        # self.window.title("Kelola Alat Laboratorium")
+        # self.window.geometry("400x400")
+
+        # tk.Label(self.window, text="Nama Alat").pack()
+        # self.nama = tk.Entry(self.window)
+        # self.nama.pack()
+
+        # tk.Label(self.window, text="Kondisi").pack()
+        # self.kondisi = tk.Entry(self.window)
+        # self.kondisi.pack()
+
+        # tk.Label(self.window, text="Status").pack()
+        # self.status = tk.Entry(self.window)
+        # self.status.insert(0, "Tersedia")
+        # self.status.pack(pady=10)
+
+        # tk.Label(self.window, text="Kategori").pack()
+
+        # self.kategori_combo = ttk.Combobox(self.window, state="readonly")
+        # self.kategori_combo.pack()
+
 
         tk.Button(
             self.window,
             text="Simpan Alat",
+            width=20,
             command=self.simpan_alat
-        ).pack(pady=10)
+        ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Update Alat",
+            width=20,
             command=self.update_alat
         ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Hapus Alat",
+            width=20,
             command=self.hapus_alat
         ).pack(pady=5)
 
@@ -71,27 +127,31 @@ class AlatGUI:
             pass
 
     def simpan_alat(self):
-        nama = self.nama.get()
-        kondisi = self.kondisi.get()
-        status = self.status.get()
-
-        
-
-        if nama == "" or kondisi == "":
-            messagebox.showwarning("Peringatan", "Data tidak boleh kosong")
+        kategori_index = self.kategori_combo.current()
+        if kategori_index == -1:
+            messagebox.showwarning("Peringatan", "Pilih kategori")
             return
 
-        self.alat_model.tambah_alat(nama, kondisi, status, 1)
-        messagebox.showinfo("Sukses", "Data alat berhasil disimpan")
-        self.clear_form()
+        kategori_id = self.kategori_data[kategori_index][0]
+
+        self.alat_model.tambah_alat(
+            self.nama.get(),
+            self.kondisi.get(),
+            self.status.get(),
+            kategori_id
+        )
+
+        messagebox.showinfo("Sukses", "Alat berhasil ditambahkan")
         self.load_data()
+        self.clear_form()
+
 
     def load_data(self):
         self.listbox.delete(0, tk.END)
-        data = self.alat_model.get_all_alat()
-        for row in data:
-            teks = f"{row[0]} | {row[1]} | {row[2]} | {row[3]}"
+        for row in self.alat_model.get_all_alat():
+            teks = f"{row[0]} | {row[1]} | {row[2]} | {row[3]} | {row[4]}"
             self.listbox.insert(tk.END, teks)
+
 
     def clear_form(self):
         self.selected_id = None
@@ -126,3 +186,8 @@ class AlatGUI:
         messagebox.showinfo("Sukses", "Data berhasil dihapus")
         self.load_data()
         self.clear_form()
+
+    def load_kategori(self):
+        self.kategori_data = self.kategori_model.get_all_kategori()
+        self.kategori_combo['values'] = [k[1] for k in self.kategori_data]
+

@@ -1,12 +1,18 @@
 import tkinter as tk
 from tkinter import messagebox
 from gui.alat_gui import AlatGUI
+from gui.kategori_gui import KategoriGUI
+from gui.peminjaman_gui import PeminjamanGUI
+# from gui.login import LoginGUI
+from src.session.session import Session
+
 
 class DashboardGUI:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Dashboard Inventaris Laboratorium")
         self.window.geometry("300x300")
+        self.window.state("zoomed")
 
         tk.Label(
             self.window,
@@ -14,25 +20,26 @@ class DashboardGUI:
             font=("Arial", 12, "bold")
         ).pack(pady=10)
 
-        tk.Button(
-            self.window,
-            text="Kelola Alat",
-            width=20,
-            command=self.kelola_alat
-        ).pack(pady=5)
+        if Session.role == "admin":
+            tk.Button(
+                self.window,
+                text="Kelola Alat",
+                width=20,
+                command=self.kelola_alat
+            ).pack(pady=5)
 
-        tk.Button(
-            self.window,
-            text="Kelola Kategori",
-            width=20,
-            command=self.kelola_kategori
-        ).pack(pady=5)
+            tk.Button(
+                self.window,
+                text="Kelola Kategori",
+                width=20,
+                command=self.kelola_kategori
+            ).pack(pady=5)
 
         tk.Button(
             self.window,
             text="Peminjaman Alat",
             width=20,
-            command=self.peminjaman
+            command=self.peminjaman_alat
         ).pack(pady=5)
 
         tk.Button(
@@ -45,18 +52,20 @@ class DashboardGUI:
             command=self.logout
         ).pack(pady=10)
 
-        self.window.mainloop()
-
     def kelola_alat(self):
         AlatGUI()
 
     def kelola_kategori(self):
-        messagebox.showinfo("Info", "Menu Kelola Kategori")
+        KategoriGUI()
 
-    def peminjaman(self):
-        messagebox.showinfo("Info", "Menu Peminjaman")
+    def peminjaman_alat(self):
+        PeminjamanGUI()
 
     def logout(self):
         konfirmasi = messagebox.askyesno("Logout", "Apakah Anda yakin ingin keluar?")
         if konfirmasi:
+            Session.user_id = None
+            Session.username = None
+            Session.role = None
+    
             self.window.destroy()
