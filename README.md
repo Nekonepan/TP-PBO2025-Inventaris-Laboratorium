@@ -2,6 +2,8 @@
 
 The Laboratory Inventory Application is a **GUI-based application** developed using **Python** and the **Object-Oriented Programming (OOP)** paradigm. This application is designed to assist laboratory staff in managing inventory data in a structured, efficient, and user-friendly manner.
 
+Report : [PERANCANGAN SISTEM MANAJEMEN INVENTARIS LABORATORIUM BERBASIS PEMROGRAMAN BERORIENTASI OBJEK](https://github.com/Nekonepan/TP-PBO2025-Inventaris-Laboratorium/blob/main/PERANCANGAN%20SISTEM%20MANAJEMEN%20INVENTARIS%20LABORATORIUM%20BERBASIS%20PEMROGRAMAN%20BERORIENTASI%20OBJEK%20UAS.pdf)
+
 ---
 
 ## 📌 Main Features
