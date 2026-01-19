@@ -38,7 +38,10 @@ class DashboardGUI:
         tk.Button(
             self.window,
             text="Logout",
-            width=20,
+            width=25,
+            height=2,
+            fg="white",
+            bg="red", # Memberi warna berbeda untuk logout
             command=self.logout
         ).pack(pady=10)
 
