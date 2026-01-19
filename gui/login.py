@@ -46,8 +46,8 @@ class LoginGUI:
                                    bd=0, cursor="hand2", width=20)
         self.btn_login.pack(pady=10, ipady=5)
 
-        tk.Label(self.left_frame, text="Don't have an account?", font=("Helvetica", 8), 
-                 bg="#4A90E2", fg="white").pack()
+        # tk.Label(self.left_frame, text="Don't have an account?", font=("Helvetica", 8), 
+        #          bg="#4A90E2", fg="white").pack()
 
         # --- SISI KANAN (Logo) ---
         self.right_frame = tk.Frame(self.main_frame, bg="white", width=250, height=400)
@@ -56,8 +56,8 @@ class LoginGUI:
         tk.Label(self.right_frame, text="🔒", font=("Helvetica", 60), 
                  bg="white", fg="#A0E9FF").pack(expand=True)
         
-        tk.Label(self.right_frame, text="Dole.com", font=("Helvetica", 8), 
-                 bg="white", fg="lightgrey").pack(pady=10)
+        # tk.Label(self.right_frame, text="Dole.com", font=("Helvetica", 8), 
+        #          bg="white", fg="lightgrey").pack(pady=10)
 
         self.window.mainloop()
 
