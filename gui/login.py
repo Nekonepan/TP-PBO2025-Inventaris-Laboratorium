@@ -12,7 +12,11 @@ class LoginGUI:
         
         # --- KUNCI FULLSCREEN ---
         # Ini akan membuat jendela otomatis maksimal (zoomed) saat dibuka
-        self.window.state("zoomed") 
+        try:
+            self.window.state("zoomed")  # Windows
+        except:
+            self.window.attributes("-zoomed", True)  # Linux
+ 
         
         self.window.configure(bg="#D1E9F6") 
 
@@ -41,7 +45,7 @@ class LoginGUI:
         self.password.pack(fill="x", padx=50, pady=(5, 30), ipady=5)
 
         # Tombol Login
-        self.btn_login = tk.Button(self.left_frame, text="SIGN UP", command=self.login,
+        self.btn_login = tk.Button(self.left_frame, text="LOGIN", command=self.login,
                                    bg="white", fg="#4A90E2", font=("Helvetica", 10, "bold"),
                                    bd=0, cursor="hand2", width=20)
         self.btn_login.pack(pady=10, ipady=5)
