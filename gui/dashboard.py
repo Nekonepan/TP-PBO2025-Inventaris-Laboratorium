@@ -9,7 +9,13 @@ class DashboardGUI:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Dashboard Inventaris Laboratorium")
-        self.window.state("zoomed")
+        
+        # self.window.state("zoomed")
+        try:
+            self.window.state("zoomed")  # Windows
+        except:
+            self.window.attributes("-zoomed", True)  # Linux
+            
         self.window.configure(bg="#D1E9F6")
 
         # --- SIDEBAR ---

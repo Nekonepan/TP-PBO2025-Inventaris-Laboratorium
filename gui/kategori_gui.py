@@ -13,7 +13,13 @@ class KategoriGUI:
         # === Window ===
         self.window = tk.Toplevel()
         self.window.title("Kelola Kategori")
-        self.window.state("zoomed")
+        
+        # self.window.state("zoomed")
+        try:
+            self.window.state("zoomed")  # Windows
+        except:
+            self.window.attributes("-zoomed", True)  # Linux
+            
         self.window.configure(bg="#F0F7FA") # Warna latar biru muda senada
 
         # --- HEADER ---

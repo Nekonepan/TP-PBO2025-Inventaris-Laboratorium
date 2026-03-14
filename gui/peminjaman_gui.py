@@ -15,7 +15,13 @@ class PeminjamanGUI:
         # === Window ===
         self.window = tk.Toplevel()
         self.window.title("Sistem Peminjaman Alat")
-        self.window.state("zoomed")
+        
+        # self.window.state("zoomed")
+        try:
+            self.window.state("zoomed")  # Windows
+        except:
+            self.window.attributes("-zoomed", True)  # Linux
+            
         self.window.configure(bg="#F0F7FA")
 
         # --- HEADER ---
